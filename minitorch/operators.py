@@ -33,7 +33,15 @@ from typing import Callable, Iterable
 
 
 # TODO: Implement for Task 0.1.
+def mul(x: float, y: float) -> float:
+    ...
 
+
+def relu(x):
+    """
+    f(x) = x if x is grater than 0, else 0
+    """
+    ...
 
 # ## Task 0.3
 
