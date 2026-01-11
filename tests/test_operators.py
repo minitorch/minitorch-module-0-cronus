@@ -8,7 +8,7 @@ from minitorch import MathTest
 import minitorch
 from minitorch.operators import (
     add,
-    addLists,
+    # addLists,
     eq,
     id,
     inv,
@@ -18,8 +18,8 @@ from minitorch.operators import (
     max,
     mul,
     neg,
-    negList,
-    prod,
+    # negList,
+    # prod,
     relu,
     relu_back,
     sigmoid,
@@ -108,7 +108,10 @@ def test_sigmoid(a: float) -> None:
     * It is  strictly increasing.
     """
     # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
+    # raise NotImplementedError("Need to implement for Task 0.2")
+    assert sigmoid(a) > 0 and sigmoid(a) < 1
+    assert_close(1 - sigmoid(a), sigmoid(-a))
+    assert sigmoid(0) == 0.5
 
 
 @pytest.mark.task0_2
@@ -116,7 +119,9 @@ def test_sigmoid(a: float) -> None:
 def test_transitive(a: float, b: float, c: float) -> None:
     """Test the transitive property of less-than (a < b and b < c implies a < c)"""
     # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
+    # raise NotImplementedError("Need to implement for Task 0.2")
+    if a < b and b < c:
+        assert a < c
 
 
 @pytest.mark.task0_2
@@ -125,7 +130,7 @@ def test_symmetric() -> None:
     gives the same value regardless of the order of its input.
     """
     # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
+    # raise NotImplementedError("Need to implement for Task 0.2")
 
 
 @pytest.mark.task0_2

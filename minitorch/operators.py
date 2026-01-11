@@ -33,6 +33,9 @@ import math
 
 # TODO: Implement for Task 0.1.
 def mul(x: float, y: float) -> float:
+    """
+    $f(x, y) = x * y$
+    """
     return x * y
 
 
