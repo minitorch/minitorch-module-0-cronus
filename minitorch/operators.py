@@ -34,7 +34,7 @@ import math
 # TODO: Implement for Task 0.1.
 def mul(x: float, y: float) -> float:
     """
-    $f(x, y) = x * y$
+    f(x, y) = x * y
     """
     return x * y
 
@@ -63,8 +63,8 @@ def max(x: float, y: float) -> float:
     return x if x > y else y
 
 
-def is_close(x: float) -> bool:
-    return True if math.fabs(x) < 1e-2 else False
+def is_close(x: float, y: float) -> bool:
+    return True if math.fabs(x - y) < 1e-2 else False
 
 
 def sigmoid(x: float) -> float:
