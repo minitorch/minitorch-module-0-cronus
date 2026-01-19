@@ -1,6 +1,8 @@
 """Collection of the core mathematical operators used throughout the code base."""
 
 import math
+from collections.abc import Iterable
+from typing import Callable
 
 # ## Task 0.1
 
@@ -118,3 +120,48 @@ def relu_back(x: float, y: float) -> float:
 
 
 # TODO: Implement for Task 0.3.
+def map(fn: Callable[[float], float]) -> Callable[[Iterable[float]], Iterable[float]]:
+    """
+    Higher-order function that applies a given function to each element of an iterable
+    """
+    def apply(ls: Iterable[float]) -> Iterable[float]:
+        ret = []
+        for x in ls:
+            ret.append(fn(x))
+        return ret
+    
+    return apply
+
+def zipWith(fn: Callable[[float, float], float]) -> Callable[[Iterable[float], Iterable[float]], Iterable[float]]:
+    """
+    Higher-order function that combines elements from two iterables using a given function
+    """
+    def apply(lsa: Iterable[float], lsb: Iterable[float]) -> Iterable[float]:
+        ret = []
+        for a, b in zip(lsa, lsb):
+            ret.append(fn(a,b))
+        return ret
+    return apply
+
+def reduce(fn: Callable[[float, float], float]) -> Callable[[Iterable[float]], float]:
+    """
+    Higher-order function that reduces an iterable to a single value using a given function
+    """
+    def apply(ls: Iterable[float]) -> float:
+        if ls == []:
+            return 0
+        result = ls[0]
+        for a in ls[1:]:
+            result = fn(result, a)
+        return result
+    return apply
+
+
+
+negList: Callable[[Iterable[float]], Iterable[float]] = map(neg)
+
+addLists: Callable[[Iterable[float], Iterable[float]], Iterable[float]] = zipWith(add)
+  
+sum: Callable[[Iterable[float]], float] = reduce(add)
+
+prod: Callable[[Iterable[float]], float] = reduce(mul)
